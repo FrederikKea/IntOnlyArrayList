@@ -7,38 +7,19 @@ public class Main {
 
         //Tilføj nogle tal
         il.add(1);
-        il.add(17);
-        il.add(42);
+        il.add(27);
+        il.add(33);
 
-        //udskriv
-        print(il);
+        System.out.println(il);
 
-        //fjern et element
         il.remove(1);
+        System.out.println("After we have removed an element");
+        System.out.println(il);
 
-        //udskriv
-        print(il);
+        System.out.println("trying to get an element ot of bounds");
+        System.out.println(il.get(5));
 
-    }
-
-    private static void print(IntOnlyArrayList list){
-        //udskrift som ArrayList - kan laves som toString i IntOnlyArrayList
-        String s;
-        //er listen tom skrives kun kantede parenteser
-        if (list.size()==0){
-            s = "[]";
-        }
-        else {
-            //sæt først begyndelsesparentes og første tal (stakitproblemet)
-            s = "[ " + list.get(0);
-            for (int i=1; i<list.size(); i++){
-                //sæt komma og næste tal, så længe der er flere tal
-                s += ", " + list.get(i);
-            }
-            //afslut med at sætte højre parentes
-            s += " ]";
-        }
-        //udskriv - kunne blive til return s i toString
-        System.out.println(s);
+        System.out.println("See the size of our IntOnlyArrayList");
+        System.out.println(il.size());
     }
 }

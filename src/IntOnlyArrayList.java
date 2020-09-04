@@ -1,36 +1,53 @@
-
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class IntOnlyArrayList {
-    //ArrayList erstattes med et int-array
-    private ArrayList<Integer> ia;
-    //tilføje field til at holde styr på størrelsen, eg. int str;
+    private int[] ia;
 
     public IntOnlyArrayList() {
-        //int[] ia = new int[20];
-        ia = new ArrayList<>();
-        //str = 0;
+        ia = new int[0];
     }
 
     public void add(int i){
-        //skal erstattes med kode, der tilgår array
-        ia.add(i);
+        int n = ia.length;
+        int[] copy = Arrays.copyOf(ia, n+1);
+        copy[n] = i;
+        ia = copy;
     }
 
-    public int get(int i){
-        //skal erstattes med kode, der tilgår array
-        return ia.get(i);
+    public int get(int i) {
+        try {
+            return ia[i];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception thrown" + e);
+        }
+        return -1;
     }
 
     public void remove(int i){
-        //skal erstattes med kode, der tilgår array
-        ia.remove(i);
+        int n = ia.length; 
+        int[] copy = Arrays.copyOf(ia, n-1);
+
+        for (int j = 0, k = 0;  j < ia.length; j++) {
+
+            //if i is the removal element
+            if (j == i) {
+                continue;
+            }
+            //if the i is not the removal element
+            copy[k++] = ia[j];
+
+        }
+        ia = copy;
     }
 
     public int size(){
-        //skal erstattes med kode, der bruger str
-        return ia.size();
+       return ia.length;
     }
 
-    //her kan toString skrives
+    @Override
+    public String toString() {
+        return "IntOnlyArrayList{" +
+                "ia=" + Arrays.toString(ia) +
+                '}';
+    }
 }
